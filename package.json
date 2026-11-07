@@ -1,0 +1,178 @@
+{
+  "name": "snappshop",
+  "version": "0.1.0",
+  "description": "Unofficial, typed TypeScript SDK and catalog integration toolkit for SnappShop.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./browser": {
+      "import": {
+        "types": "./dist/browser/index.d.ts",
+        "default": "./dist/browser/index.js"
+      },
+      "require": {
+        "types": "./dist/browser/index.d.cts",
+        "default": "./dist/browser/index.cjs"
+      }
+    },
+    "./catalog": {
+      "import": {
+        "types": "./dist/catalog/index.d.ts",
+        "default": "./dist/catalog/index.js"
+      },
+      "require": {
+        "types": "./dist/catalog/index.d.cts",
+        "default": "./dist/catalog/index.cjs"
+      }
+    },
+    "./catalog/express": {
+      "import": {
+        "types": "./dist/catalog/express.d.ts",
+        "default": "./dist/catalog/express.js"
+      },
+      "require": {
+        "types": "./dist/catalog/express.d.cts",
+        "default": "./dist/catalog/express.cjs"
+      }
+    },
+    "./catalog/next": {
+      "import": {
+        "types": "./dist/catalog/next.d.ts",
+        "default": "./dist/catalog/next.js"
+      },
+      "require": {
+        "types": "./dist/catalog/next.d.cts",
+        "default": "./dist/catalog/next.cjs"
+      }
+    },
+    "./nestjs": {
+      "import": {
+        "types": "./dist/nestjs/index.d.ts",
+        "default": "./dist/nestjs/index.js"
+      },
+      "require": {
+        "types": "./dist/nestjs/index.d.cts",
+        "default": "./dist/nestjs/index.cjs"
+      }
+    },
+    "./mongoose": {
+      "import": {
+        "types": "./dist/mongoose/index.d.ts",
+        "default": "./dist/mongoose/index.js"
+      },
+      "require": {
+        "types": "./dist/mongoose/index.d.cts",
+        "default": "./dist/mongoose/index.cjs"
+      }
+    },
+    "./channel": {
+      "import": {
+        "types": "./dist/channel/index.d.ts",
+        "default": "./dist/channel/index.js"
+      },
+      "require": {
+        "types": "./dist/channel/index.d.cts",
+        "default": "./dist/channel/index.cjs"
+      }
+    },
+    "./testing": {
+      "import": {
+        "types": "./dist/testing/index.d.ts",
+        "default": "./dist/testing/index.js"
+      },
+      "require": {
+        "types": "./dist/testing/index.d.cts",
+        "default": "./dist/testing/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test tsup.config.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "check:exports": "node scripts/check-exports.mjs",
+    "check:browser": "node scripts/check-browser-boundary.mjs",
+    "check:pack": "node scripts/check-pack.mjs",
+    "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build && npm run check:exports && npm run check:browser && npm run check:pack",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run verify"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "snappshop",
+    "marketplace",
+    "sdk",
+    "typescript",
+    "unofficial"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "zod": "^4.6.7"
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=10",
+    "express": ">=4",
+    "mongoose": ">=8"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
+    },
+    "mongoose": {
+      "optional": true
+    }
+  },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "minimatch": "^11.0.1"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "prettier": "^3.6.2",
+    "reflect-metadata": "^0.2.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.0.0"
+  }
+}
